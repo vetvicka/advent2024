@@ -7,6 +7,9 @@ function measure(fn: Function) {
 }
 
 export function runMeasureLog(fn1: Function, fn2: Function) {
+    if (process.env.NODE_ENV === 'test') {
+        return;
+    }
     const one = measure(fn1);
     const two = measure(fn2);
     console.log('#1: ', `result: ${one.result} \tin: ${one.time}ms`);
