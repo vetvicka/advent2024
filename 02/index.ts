@@ -6,7 +6,6 @@ function parseInput(inputFileName: string) {
     const data = input.split('\n')
         .filter(Boolean)
         .map(line => line.split(' ').map(Number))
-    // parsing specific for the day
     return data;
 }
 
@@ -30,7 +29,6 @@ export function isValidWithProblemDampener(report: number[]) {
     return copy.some((el, i) => {
         const toBeSpliced = [...copy];
         toBeSpliced.splice(i, 1);
-        // console.log('splice', toBeSpliced)
         return isValid(toBeSpliced)
     })
 }
