@@ -48,11 +48,11 @@ export function solvePartOne(inputFileName: string) {
             const candidateA = [first[0] + diff[0], first[1] + diff[1]];
             const candidateB = [second[0] - diff[0], second[1] - diff[1]];
     
-            if (isInBounds(map, candidateA[0], candidateA[1])) {
+            if (isInBounds(map, { x: candidateA[0], y: candidateA[1] })) {
                 map[candidateA[0]][candidateA[1]] = '#';
                 signalMap[`${candidateA[0]}-${candidateA[1]}`] = true;
             }
-            if (isInBounds(map, candidateB[0], candidateB[1])) {
+            if (isInBounds(map, { x: candidateB[0], y: candidateB[1] })) {
                 map[candidateB[0]][candidateB[1]] = '#';
                 signalMap[`${candidateB[0]}-${candidateB[1]}`] = true;
             }
@@ -68,7 +68,7 @@ function markNodes(map: string[][], signalMap: Record<string, boolean>, diff: nu
         const candidate = [current[0] + diff[0], current[1] + diff[1]];
         current[0] = candidate[0];
         current[1] = candidate[1];
-        if (!isInBounds(map, current[0], current[1])) {
+        if (!isInBounds(map, { x: current[0], y: current[1] })) {
             break;
         }
     }

@@ -65,10 +65,54 @@ export function solvePartOne(inputFileName: string) {
     return checksum(dataTable);
 }
 
+function blockInfo(dataTable: Array<number | null>, index: number) {
+    let from = index;
+    let to = index;
+    const value = dataTable[index];
+    while (dataTable[from - 1] === value) {
+        from -= 1;
+    }
+    while (dataTable[to + 1] === value) {
+        to += 1;
+    }
+    return { from, to, value, size: to - from + 1 };
+}
+
+function findEmptySpaceBlock(dataTable: Array<number | null>, index: number, size: number) {
+    for (let i = 0; i < index; i++) {
+        if (dataTable[i] !== null) { continue; }
+        const block = blockInfo(dataTable, i);
+        if (block.size >= size) {
+            return block;
+        }
+    }
+    return null;
+}
+
+function rearrangeBlocks(dataTable: Array<number | null>, emptySpaces: number[]) {
+    let i = dataTable.length - 1;
+    while (i > 0) {
+        if (dataTable[i] === null) {
+            i -= 1;
+            continue;
+        }
+        const block = blockInfo(dataTable, i);
+        const emptyBlock = findEmptySpaceBlock(dataTable, i, block.size);
+        if (emptyBlock === null) {
+            i = block.from - 1;
+            continue;
+        }
+        for (let j = 0; j < block.size; j++) {
+            dataTable[emptyBlock.from + j] = dataTable[block.from + j];
+            dataTable[block.from + j] = null;
+        }
+    }
+}
+
 export function solvePartTwo(inputFileName: string) {
-    const parsed = parseInput(inputFileName)
-    // solve part 2
-    return null
+    const { dataTable, emptySpaces } = parseInput(inputFileName)
+    rearrangeBlocks(dataTable, emptySpaces);
+    return checksum(dataTable);
 }
 
 

@@ -121,7 +121,6 @@ export function solvePartOne(inputFileName: string) {
         }
         map[x][y] = 'X';
     }
-    console.log('map', printMap(map))
     return countSteps(map);
 }
 

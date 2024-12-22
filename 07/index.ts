@@ -30,8 +30,6 @@ function generatePermutations(operators: string[], length: number) {
     return permutations
 }
 
-console.log(generatePermutations(operators, 3))
-
 function evaluateOperators(numbers: number[], operators: string[]) {
     let result = numbers[0];
     for (let i = 0; i < operators.length; i++) {

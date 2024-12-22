@@ -23,4 +23,4 @@ export function solvePartTwo(inputFileName: string) {
 
 
 
-runMeasureLog(() => solvePartOne('input_example.txt'), () => solvePartTwo('input.txt'));
+runMeasureLog(() => solvePartOne('input_example.txt'), () => solvePartTwo('input_example.txt'));
