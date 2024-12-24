@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { runMeasureLog } from '../utils/runMeasureLog'
-;
+import { runMeasureLog } from '../utils/runMeasureLog';
+
 function parseInput(inputFileName: string) {
     const input = fs.readFileSync( `${__dirname}/${inputFileName}`, {encoding: 'utf8'});
     const data = input.split('\n')
