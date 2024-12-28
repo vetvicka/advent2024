@@ -23,3 +23,20 @@ export function forEachMap<T>(data: T[][], callback: (el: T, point: Point) => vo
         }
     }
 }
+
+export function isUp(direction: Point) {
+    const { x, y } = direction;
+    return x === -1 && y === 0;
+}
+export function isDown(direction: Point) {
+    const { x, y } = direction;
+    return x === 1 && y === 0;
+}
+export function isRight(direction: Point) {
+    const { x, y } = direction;
+    return x === 0 && y === 1;
+}
+export function isLeft(direction: Point) {
+    const { x, y } = direction;
+    return x === 0 && y === -1;
+}
